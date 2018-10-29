@@ -23,7 +23,7 @@ module.exports = {
       stylus: {
         // @/ 是 src/ 的别名
         // 所以这里假设你有 `src/var.styl` 这个文件
-        data: `@import "@/style/var.styl";`
+        data: `@import "~@/style/var";`
       }
     }
   }

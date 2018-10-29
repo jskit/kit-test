@@ -5,6 +5,7 @@
     <slot></slot>
     <button :class="$style['btn-lg']">btn-lg</button>
     <button :class="$style.btnLg">btnLg</button>
+    <button :class="[$style.btn, primaryClass]">{{msg}}</button>
     <span :class="{ [$style['text-extend']]: isExtend }">扩展支持</span>
   </div>
 </template>
@@ -37,6 +38,12 @@ li
 
 a
   color #42b983
+
+.btn
+  background gray
+
+.btn-info
+  color $color-info
 
 .test
   border 2px solid

@@ -62,7 +62,8 @@ yarn run test:unit
 </style>
 ```
 
-- 优势——使用简单，不需要额外的知识
+- 优势
+  - 启用很简单，使用也很简单，不需要额外的知识
 - Q: 使用作用域样式 `scoped` 存在的问题
   - 父组件级联子组件样式不生效
   - 对 `v-html` 中内在的标签样式不生效
@@ -76,6 +77,7 @@ yarn run test:unit
 
 ### 模块化CSS
 
+- https://cli.vuejs.org/zh/guide/css.html#css-modules
 
 CSS Modules的流行起源于React社区，它获得了社区的迅速的采用。Vue更甚之，其强大，简便的特性再加上Vue-cli对其开箱即用的支持，将其发展到另一个高度。
 
@@ -106,7 +108,26 @@ NOTE:
 
 原理：`module`属性会经由Vue-loader编译后，在我们的`component`产生一个叫`$style`的隐藏的`computed`属性。也就是说，我们甚至可以在Vue生命周期的`created`钩子中取得由CSS Modules生成的`class`类名：
 
+如果我们想要在JavaScript里面将独立的CSS文件作为CSS模块来加载的话，需要在`.css`文件名前添加`.module`前缀，比如：
+
+```vue
+<script>
+import styles from './src/style/foo.module.css';
+</script>
+or
+<script>
+import sassStyle from './src/scss/foo.module.scss'；
+</script>
+```
+
+如果你想去掉文件名中的 `.module`，可以设置 `vue.config.js` 中的 `css.modules` 为 `true`：
+
 使用`module`和`scoped`不一样的地方就是在于所有创建的类可以通过`$style`对象获取。因此类要应用到元素上，就需要通过`:class`来绑定`$style`这个对象。它的好处是，当我们在HTML中查看这个元素时，我们可以立刻知道它所属的是哪个组件。
+
+- 优势
+  - 启用很简单
+  - 可以通过`props`将`class`传到子组件中
+  - 命名都会以组件名为前缀，更直观，控制更彻底
 
 ## 总结
 
