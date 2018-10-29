@@ -34,9 +34,9 @@ export default {
 .test >>> .h1
   color orange
 
-// /deep/ 已废弃
-.test /deep/ .h1
-  color blue
+// /deep/
+// .test /deep/ .h1
+//   color #123456
 
 .slot
   color lightblue
