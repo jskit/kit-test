@@ -6,6 +6,7 @@
     <button :class="$style['btn-lg']">btn-lg</button>
     <button :class="$style.btnLg">btnLg</button>
     <button :class="[$style.btn, primaryClass]">{{msg}}</button>
+    <button :class="[$style['btn-info']]">composes</button>
     <span :class="{ [$style['text-extend']]: isExtend }">扩展支持</span>
   </div>
 </template>
@@ -43,6 +44,7 @@ a
   background gray
 
 .btn-info
+  composes btn
   color $color-info
 
 .test
@@ -63,6 +65,7 @@ a
   color $color-info
 
 .text-extend
+  composes: test from '../style/test.styl';
   display inline-block
   margin 20px 0
   border-top 4px solid orange

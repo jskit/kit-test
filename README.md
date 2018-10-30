@@ -37,6 +37,28 @@ yarn run test:unit
 
 ## FAQ
 
+- https://cssinjs.org
+- https://cli.vuejs.org/zh/guide/css.html#css-modules
+- https://github.com/css-modules/css-modules
+
+学过网页开发就会知道，CSS 不能算编程语言，只是网页样式的一种描述方法。
+
+为了让 CSS 也能适用软件工程方法，程序员想了各种办法，让它变得像一门编程语言。从最早的Less、SASS，到后来的 PostCSS，再到最近的 CSS in JS，都是为了解决这个问题。
+
+CSS Modules 与以上不同，它不是将 CSS 改造成编程语言，而是功能很单纯，只加入了局部作用域和模块依赖，这恰恰是网页组件最急需的功能。
+
+当前 CSS 面临的问题
+
+- 全局污染
+- 命名混乱
+- 依赖管理不彻底
+- 无法共享变量
+- 代码压缩不彻底
+
+现代Web开发中的CSS离完美还差得远，这并不奇怪。现在，项目通常是相当的复杂的，而CSS样式又是全局性的，所以到最后总是极容易地发生样式冲突：**样式相互覆盖或隐式地级联到我们未考虑到的元素**。
+
+为了减轻CSS存在的主要痛点，我们在项目中普遍采用[BEM]()的方法来。不过这只能解决CSS问题中的一小部分。
+
 - https://www.w3cplus.com/vue/scoped-styles-vs-css-modules.html
 - https://stackoverflow.com/questions/25609678/what-do-deep-and-shadow-mean-in-a-css-selector
 - https://developers.google.com/web/updates/2017/10/remove-shadow-piercing?hl=zh-cn
@@ -77,7 +99,11 @@ yarn run test:unit
 
 ### 模块化CSS
 
+- https://juejin.im/entry/5a37690d6fb9a045132acb15
+- https://github.com/css-modules/css-modules
 - https://cli.vuejs.org/zh/guide/css.html#css-modules
+- http://www.ruanyifeng.com/blog/2016/06/css_modules.html
+- https://github.com/camsong/blog/issues/5
 
 CSS Modules的流行起源于React社区，它获得了社区的迅速的采用。Vue更甚之，其强大，简便的特性再加上Vue-cli对其开箱即用的支持，将其发展到另一个高度。
 
@@ -125,9 +151,19 @@ import sassStyle from './src/scss/foo.module.scss'；
 使用`module`和`scoped`不一样的地方就是在于所有创建的类可以通过`$style`对象获取。因此类要应用到元素上，就需要通过`:class`来绑定`$style`这个对象。它的好处是，当我们在HTML中查看这个元素时，我们可以立刻知道它所属的是哪个组件。
 
 - 优势
-  - 启用很简单
+  - 启用很简单，使用依然是 CSS，几乎 0 学习成本
+  - 样式默认是局部的（:local），解决了命名冲突和全局污染问题
+    - 如需全局样式，使用 :global
+  - class 名生成规则配置灵活，可以此来压缩 class 名
   - 可以通过`props`将`class`传到子组件中
+  - 可以使用 `compose` 组合样式
+  - 实现CSS，JS变量共享
   - 命名都会以组件名为前缀，更直观，控制更彻底
+
+- 局部作用域
+- 全局作用域
+- 定制哈希类名
+- Class的组合
 
 ## 总结
 
@@ -136,3 +172,10 @@ import sassStyle from './src/scss/foo.module.scss'；
 `scoped`样式的使用不需要额外的知识，给人舒适的感觉。它所存在的局限，也正它的使用简单的原因。它可以用于支持小型到中型的Web应用程序。在更大的Web应用程序或更复杂的场景中，对于CSS的运用，我们更希望它是显式的，更具有控制权。比如说，你的样式可以在多组件中重用时，那么`scoped`的局限性就更为明显了。反之，CSS Modules的出现，正好解决了这些问题，不过也要付出一定的代价，那就是需要通过`$style`来引用。虽然在`<template>`中大量使用`$style`，让人看起来很蛋疼，但它会让你的样式更加安全和灵活，更易于控制。CSS Modules还有一个好处就是可以使用JavaScript获取到我们定义的一些变量，这样我们就不需要手动保持其在多个文件中同步。
 
 最后还是那句话，**任何解决CSS的方案，没有最好的，只有最合适的！** 我们应该根据自己的项目、场景和团队进行选择。当然，不管选择哪种方案，都是为了帮助我们更好的控制样式，解决原生CSS中存在的痛点。
+
+最终探究的方案
+
+- 使用css-modules 以及其中的组合
+- 不使用css-modules 的变量，使用 cssnext 的
+- 和stylus 搭配是否有问题
+- 和postcss 搭配是否有问题
