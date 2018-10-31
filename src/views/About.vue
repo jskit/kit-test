@@ -3,7 +3,8 @@
     <img alt="Vue logo" src="../assets/logo.png">
     <div :class="$style.test">
       <p>测试样式</p>
-      <Test2 msg="Welcome to Your Vue.js App">
+      <Test2 msg="Welcome to Your Vue.js App"
+        :parentStyle="parentStyle">
         <div :class="$style.slot">slot content</div>
       </Test2>
     </div>
@@ -13,9 +14,17 @@
 <script>
 // @ is an alias to /src
 import Test2 from "@/components/Test2.vue";
+import style from "@/style/test.styl";
+
+console.log(style);
 
 export default {
   name: "home",
+  data() {
+    return {
+      parentStyle: style.aa,
+    }
+  },
   components: {
     Test2
   }
@@ -29,9 +38,6 @@ export default {
 
 .test .h1
   color yellow
-
-.test >>> .h1
-  color orange
 
 .slot
   color lightblue

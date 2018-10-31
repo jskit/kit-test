@@ -37,6 +37,12 @@ yarn run test:unit
 
 ## FAQ
 
+当前还存在的问题
+
+- 变量怎么使用，和预处理器搭配
+- 统一引入`var.styl`，如何设置
+- 父子组件相互控制的案例
+
 - https://cssinjs.org
 - https://cli.vuejs.org/zh/guide/css.html#css-modules
 - https://github.com/css-modules/css-modules

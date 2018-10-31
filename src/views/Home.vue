@@ -22,7 +22,13 @@ export default {
 };
 </script>
 
+<style lang="stylus">
+
+</style>
+
+
 <style lang="stylus" scoped>
+
 .test
   color red
   border 1px solid
@@ -35,8 +41,8 @@ export default {
   color orange
 
 // /deep/
-// .test /deep/ .h1
-//   color #123456
+.test /deep/ .h1
+  color #123456
 
 .slot
   color lightblue

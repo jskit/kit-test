@@ -5,7 +5,7 @@
     <slot></slot>
     <button :class="$style['btn-lg']">btn-lg</button>
     <button :class="$style.btnLg">btnLg</button>
-    <button :class="[$style.btn, primaryClass]">{{msg}}</button>
+    <button :class="[$style.btn, parentStyle]">{{msg}}</button>
     <button :class="[$style['btn-info']]">composes</button>
     <span :class="{ [$style['text-extend']]: isExtend }">扩展支持</span>
   </div>
@@ -14,13 +14,14 @@
 <script>
 export default {
   props: {
-    msg: String
+    msg: String,
+    parentStyle: String,
   },
   data() {
     return {
       isExtend: true
     };
-  }
+  },
 };
 </script>
 
@@ -65,7 +66,7 @@ a
   color $color-info
 
 .text-extend
-  composes: test from '../style/test.styl';
+  composes: aa from '../style/test.styl';
   display inline-block
   margin 20px 0
   border-top 4px solid orange
