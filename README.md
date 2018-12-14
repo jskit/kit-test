@@ -1,5 +1,7 @@
 # kit-test
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/jskit/kit-test.svg)](https://greenkeeper.io/)
+
 ## Project setup
 ```
 yarn install
